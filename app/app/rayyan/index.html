@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rayyan Aura Rahman | Portfolio</title>
+    <meta name="description" content="Portfolio of Rayyan Aura Rahman, Informatics Student at ITS, Data Enthusiast & Programmer.">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#0f172a',
+                        darker: '#0b1120',
+                        card: '#1e293b',
+                        primary: '#2dd4bf', // Teal 400
+                        secondary: '#3b82f6', // Blue 500
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2dd4bf;
+        }
+
+        /* Fade-in Animation Classes */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            visibility: hidden;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+            visibility: visible;
+        }
+
+        /* Gradient Text Utility */
+        .text-gradient {
+            background: linear-gradient(to right, #2dd4bf, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Custom glowing border for cards */
+        .glowing-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glowing-card:hover {
+            border-color: rgba(45, 212, 191, 0.5);
+            box-shadow: 0 0 20px rgba(45, 212, 191, 0.1);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-darker">
+
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+        <div class="absolute inset-0 bg-darker/80 backdrop-blur-md border-b border-white/10 shadow-lg"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#home" class="text-2xl font-bold tracking-tighter text-white hover:text-primary transition-colors">
+                        MyPortfolio<span class="text-primary">.</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-300 hover:text-primary text-sm font-medium transition-colors">About</a>
+                    <a href="#skills" class="text-gray-300 hover:text-primary text-sm font-medium transition-colors">Skills</a>
+                    <a href="#education" class="text-gray-300 hover:text-primary text-sm font-medium transition-colors">Education</a>
+                    <a href="#experience" class="text-gray-300 hover:text-primary text-sm font-medium transition-colors">Experience</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-secondary text-white text-sm font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 transform hover:-translate-y-0.5">Contact Me</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-darker border-b border-white/10 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2 shadow-xl">
+                <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-white/5 transition-colors mobile-link">About</a>
+                <a href="#skills" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-white/5 transition-colors mobile-link">Skills</a>
+                <a href="#education" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-white/5 transition-colors mobile-link">Education</a>
+                <a href="#experience" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-white/5 transition-colors mobile-link">Experience</a>
+                <a href="#contact" class="block px-3 py-3 rounded-md text-base font-medium text-primary hover:text-white hover:bg-primary/20 transition-colors mobile-link">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+            <!-- Background Decoration -->
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center fade-in-section">
+                <p class="text-primary font-medium tracking-wide mb-3 uppercase text-sm md:text-base">Selamat Datang!</p>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+                    Rayyan <span class="text-gradient">Aura Rahman</span>
+                </h1>
+                <p class="mt-4 text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed mb-10">
+                    Informatics Student at Institut Teknologi Sepuluh Nopember (ITS)
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:shadow-primary/40 transition-all duration-300">
+                        Get In Touch
+                    </a>
+                    <a href="#about" class="w-full sm:w-auto px-8 py-3.5 rounded-full border border-gray-600 text-gray-300 font-semibold hover:border-primary hover:text-primary transition-all duration-300">
+                        Explore My Work <i class="fas fa-arrow-down ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-24 bg-darker">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in-section">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">About <span class="text-primary">Me</span></h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center fade-in-section">
+                    <!-- Text Content -->
+                    <div class="space-y-6 text-gray-300 text-lg leading-relaxed">
+                        <p>
+                            Nama saya Rayyan Aura Rahman, seorang mahasiswa program studi <strong>Informatika di Institut Teknologi Sepuluh Nopember (ITS)</strong>. Saya memiliki minat terhadap teknologi, analisis data, dan penyelesaian masalah yang kompleks melalui kode.
+                        </p>
+                        <p>
+                            Untuk saat ini, saya bersemangat untuk terus belajar dan mengembangkan keterampilan saya dalam pemrograman, analisis data, dan pengembangan perangkat lunak. Saya percaya bahwa teknologi memiliki potensi besar untuk memecahkan masalah dunia nyata, dan saya ingin menjadi bagian dari solusi tersebut.
+                        </p>
+                    </div>
+                    
+                    <!-- Image -->
+                    <div class="flex justify-center md:justify-end">
+                        <img src="assets\profile_photo.jpeg" alt="Rayyan Aura Rahman" class="w-64 h-64 rounded-full object-cover shadow-lg border-4 border-primary">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-24 bg-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in-section">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Core <span class="text-primary">Skills</span></h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-4 fade-in-section max-w-4xl mx-auto">
+                    <!-- Skill Tags -->
+                    <!-- Dasar Pemrograman -->
+                    <div class="px-6 py-3 bg-card border border-white/10 rounded-full text-gray-300 hover:border-primary hover:text-primary hover:-translate-y-1 transition-all duration-300 cursor-default shadow-lg shadow-black/20 flex items-center gap-3">
+                        <i class="fas fa-laptop-code text-xl"></i> Dasar Pemrograman
+                    </div>
+
+                    <!-- C -->
+                    <div class="px-6 py-3 bg-card border border-white/10 rounded-full text-gray-300 hover:border-primary hover:text-primary hover:-translate-y-1 transition-all duration-300 cursor-default shadow-lg shadow-black/20 flex items-center gap-3">
+                        <i class="fas fa-code text-xl"></i> C
+                    </div>
+
+                    <!-- C++ -->
+                    <div class="px-6 py-3 bg-card border border-white/10 rounded-full text-gray-300 hover:border-primary hover:text-primary hover:-translate-y-1 transition-all duration-300 cursor-default shadow-lg shadow-black/20 flex items-center gap-3">
+                        <i class="fas fa-file-code text-xl"></i> C++
+                    </div>
+
+                    <!-- Excel -->
+                    <div class="px-6 py-3 bg-card border border-white/10 rounded-full text-gray-300 hover:border-primary hover:text-primary hover:-translate-y-1 transition-all duration-300 cursor-default shadow-lg shadow-black/20 flex items-center gap-3">
+                        <i class="fas fa-file-excel text-xl"></i> Excel
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="py-24 bg-darker relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in-section">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Education <span class="text-secondary">& Courses</span></h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 fade-in-section">
+                    <!-- Ed Item 1 -->
+                    <div class="glowing-card bg-card p-8 rounded-2xl relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="fas fa-university text-6xl text-white"></i>
+                        </div>
+                        <span class="text-sm text-primary font-semibold tracking-wider">DEGREE</span>
+                        <h3 class="text-xl font-bold text-white mt-2 mb-1">Informatics Engineering</h3>
+                        <h4 class="text-gray-400 font-medium mb-4">Institut Teknologi Sepuluh Nopember (ITS)</h4>
+                        <p class="text-gray-500 text-sm">Focusing on algorithms, data structures, software engineering, and intelligent systems.</p>
+                    </div>
+
+                    <!-- Ed Item 2 -->
+                    <div class="glowing-card bg-card p-8 rounded-2xl relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="fas fa-laptop-code text-6xl text-white"></i>
+                        </div>
+                        <span class="text-sm text-primary font-semibold tracking-wider">2025</span>
+                        <h3 class="text-xl font-bold text-white mt-2 mb-1">Schematics BST</h3>
+                        <h4 class="text-gray-400 font-medium mb-4">Basic Bootcamp</h4>
+                        <p class="text-gray-500 text-sm">Intensive training program focused on programming fundamentals, algorithmic logic, and efficient computational problem-solving.</p>
+                    </div>
+
+                    <!-- Ed Item 3 -->
+                    <div class="glowing-card bg-card p-8 rounded-2xl relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="fas fa-chart-line text-6xl text-white"></i>
+                        </div>
+                        <span class="text-sm text-primary font-semibold tracking-wider">BOOTCAMP</span>
+                        <h3 class="text-xl font-bold text-white mt-2 mb-1">Karirnex Bootcamp</h3>
+                        <h4 class="text-gray-400 font-medium mb-4">Microsoft Excel</h4>
+                        <p class="text-gray-500 text-sm">Comprehensive practical bootcamp on statistical analysis, and advanced spreadsheet modeling.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-24 bg-dark relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in-section">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Experience <span class="text-primary">& Orgs</span></h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="max-w-4xl mx-auto fade-in-section">
+                    <!-- Timeline style layout -->
+                    <div class="space-y-6">
+                        <!-- Exp Item -->
+                        <div class="glowing-card bg-card p-6 rounded-xl flex flex-col md:flex-row md:items-center justify-between border-l-4 border-l-primary gap-4">
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Sponsorship Division</h3>
+                                <p class="text-gray-400">Ini Lho ITS! Tuban</p>
+                            </div>
+                            <div class="md:text-right">
+                                <span class="inline-block px-3 py-1 bg-darker text-primary rounded-full text-xs font-semibold">2025</span>
+                            </div>
+                        </div>
+
+                        <!-- Exp Item -->
+                        <div class="glowing-card bg-card p-6 rounded-xl flex flex-col md:flex-row md:items-center justify-between border-l-4 border-l-secondary gap-4">
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Finance Division</h3>
+                                <p class="text-gray-400">Schematics</p>
+                            </div>
+                            <div class="md:text-right">
+                                <span class="inline-block px-3 py-1 bg-darker text-secondary rounded-full text-xs font-semibold">2026</span>
+                            </div>
+                        </div>
+
+                        <!-- Exp Item -->
+                        <div class="glowing-card bg-card p-6 rounded-xl flex flex-col md:flex-row md:items-center justify-between border-l-4 border-l-primary gap-4">
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Member / Contributor</h3>
+                                <p class="text-gray-400">Zenitron 11</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 bg-darker">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in-section">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Get In <span class="text-primary">Touch</span></h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+                    <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Whether you have a question, a project idea, or just want to say hi, feel free to drop a message. I'll try my best to get back to you!</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 fade-in-section">
+                    <!-- Contact Form -->
+                    <div class="bg-card p-8 rounded-2xl border border-white/5 shadow-xl">
+                        <form onsubmit="event.preventDefault(); showMessage();" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Name</label>
+                                <input type="text" id="name" class="w-full bg-darker border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="John Doe" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                                <input type="email" id="email" class="w-full bg-darker border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="john@example.com" required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Message</label>
+                                <textarea id="message" rows="4" class="w-full bg-darker border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none" placeholder="Your message here..." required></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-3.5 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all duration-300">
+                                Send Message <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                            
+                            <!-- Custom Message Box (Hidden by default) -->
+                            <div id="form-msg" class="hidden mt-4 p-4 rounded-lg bg-teal-500/10 border border-teal-500/50 text-teal-400 text-center text-sm">
+                                Thanks for reaching out! This is a demo form.
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Connect Links -->
+                    <div class="flex flex-col justify-center space-y-8">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-6">Connect With Me</h3>
+                            <p class="text-gray-400 mb-8">Find my code repositories, competitive programming profiles, and professional network below.</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <a href="https://github.com/ianion31" target="_blank" class="flex items-center gap-4 p-4 bg-card border border-white/5 rounded-xl hover:border-gray-500 hover:bg-white/5 transition-all group">
+                                <div class="w-12 h-12 bg-darker rounded-full flex items-center justify-center text-white group-hover:text-white transition-colors">
+                                    <i class="fab fa-github text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold">GitHub</h4>
+                                    <p class="text-gray-500 text-sm">Check out my projects & code</p>
+                                </div>
+                                <i class="fas fa-external-link-alt text-gray-600 ml-auto group-hover:text-white transition-colors"></i>
+                            </a>
+
+                            <a href="https://codeforces.com/profile/rayyanaurarahman" target="_blank" class="flex items-center gap-4 p-4 bg-card border border-white/5 rounded-xl hover:border-blue-500/50 hover:bg-blue-500/5 transition-all group">
+                                <div class="w-12 h-12 bg-darker rounded-full flex items-center justify-center text-blue-400 group-hover:text-blue-500 transition-colors">
+                                    <i class="fas fa-chart-bar text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold">Codeforces</h4>
+                                    <p class="text-gray-500 text-sm">Competitive programming profile</p>
+                                </div>
+                                <i class="fas fa-external-link-alt text-gray-600 ml-auto group-hover:text-blue-400 transition-colors"></i>
+                            </a>
+                            
+                            <a href="https://www.linkedin.com/in/rayyan-aura-rahman-9294a336a/" target="_blank" class="flex items-center gap-4 p-4 bg-card border border-white/5 rounded-xl hover:border-teal-500/50 hover:bg-teal-500/5 transition-all group">
+                                <div class="w-12 h-12 bg-darker rounded-full flex items-center justify-center text-teal-400 group-hover:text-teal-500 transition-colors">
+                                    <i class="fab fa-linkedin-in text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold">LinkedIn</h4>
+                                    <p class="text-gray-500 text-sm">Professional network</p>
+                                </div>
+                                <i class="fas fa-external-link-alt text-gray-600 ml-auto group-hover:text-teal-400 transition-colors"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark py-8 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-500 text-sm">
+                &copy; <span id="year"></span> Rayyan Aura Rahman. All rights reserved. <br>
+                <span class="text-xs mt-2 inline-block">Designed with <i class="fas fa-heart text-red-500/70 mx-1"></i> using HTML, Tailwind CSS & JS.</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Navbar blur and background on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileBtn.querySelector('i').classList.remove('fa-times');
+                mobileBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Intersection Observer for scroll animations (Fade-in)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Form submission simulation (No alert)
+        function showMessage() {
+            const msgBox = document.getElementById('form-msg');
+            msgBox.classList.remove('hidden');
+            // reset form visually
+            document.querySelector('form').reset();
+            setTimeout(() => {
+                msgBox.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
