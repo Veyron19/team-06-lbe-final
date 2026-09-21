@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portofolio Reza dari Surabaya">
+  <title>Reza — Portofolio</title>
+
+  <style>
+    :root {
+      --ink: #152128;
+      --cream: #f5f2ea;
+      --orange: #ec5b25;
+      --muted: #627077;
+      --line: #d8d6cf;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(1160px, calc(100% - 44px));
+      margin: auto;
+    }
+
+    .top {
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .top a:hover { color: var(--orange); }
+
+    .name {
+      font-size: 1.1rem;
+    }
+
+    .name i {
+      color: var(--orange);
+      font-style: normal;
+    }
+
+    .hero {
+      border-top: 1px solid var(--ink);
+      padding: 23px 0 64px;
+      display: grid;
+      grid-template-columns: 1.16fr 0.84fr;
+      gap: 50px;
+      align-items: end;
+    }
+
+    .hello {
+      font-size: clamp(3.7rem, 8vw, 7.5rem);
+      line-height: 0.86;
+      letter-spacing: -0.085em;
+      margin: 0;
+    }
+
+    .hello em {
+      color: var(--orange);
+      font-style: normal;
+    }
+
+    .hero-text {
+      font-size: 1.08rem;
+      max-width: 470px;
+      margin: 34px 0;
+      color: #36434a;
+    }
+
+    .link {
+      display: inline-flex;
+      gap: 10px;
+      font-weight: 800;
+      border-bottom: 2px solid var(--orange);
+      padding-bottom: 5px;
+    }
+
+    .link:hover { color: var(--orange); }
+
+    .photo {
+      height: min(545px, 55vw);
+      min-height: 380px;
+      position: relative;
+      overflow: hidden;
+      background: var(--ink);
+      display: flex;
+      align-items: flex-end;
+      padding: 30px;
+      color: var(--cream);
+    }
+
+    .photo::before {
+      content: "R";
+      position: absolute;
+      right: -25px;
+      top: -100px;
+      color: rgba(236, 91, 37, 0.22);
+      font-size: 34rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .photo strong {
+      position: relative;
+      font-size: clamp(2.6rem, 5vw, 4.4rem);
+      line-height: 0.86;
+      letter-spacing: -0.07em;
+    }
+
+    .photo::after {
+      content: "REZA · SURABAYA";
+      position: absolute;
+      right: 13px;
+      bottom: 11px;
+      background: var(--orange);
+      color: white;
+      padding: 7px 10px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    section {
+      border-top: 1px solid var(--line);
+      padding: 82px 0;
+    }
+
+    .section-no {
+      color: var(--orange);
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: 50px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 0.96;
+      letter-spacing: -0.065em;
+      margin: 7px 0;
+    }
+
+    .bio {
+      font-size: 1.25rem;
+      max-width: 650px;
+      margin: 0;
+    }
+
+    .details {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+    }
+
+    .details div {
+      padding: 16px 8px 0 0;
+    }
+
+    .details small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 28px;
+    }
+
+    .skills span {
+      border: 1px solid var(--ink);
+      border-radius: 30px;
+      padding: 8px 13px;
+      font-size: 0.87rem;
+      font-weight: 700;
+    }
+
+    .works {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .work {
+      min-height: 280px;
+      padding: 21px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #23343a;
+      color: white;
+    }
+
+    .work:nth-child(2) { background: #d94c1e; }
+    .work:nth-child(3) { background: #687c67; }
+
+    .work p {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      margin: 0;
+    }
+
+    .work h3 {
+      font-size: 1.8rem;
+      line-height: 1;
+      margin: 0;
+      letter-spacing: -0.055em;
+    }
+
+    .contact {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 90px 0;
+    }
+
+    .contact .section-no {
+      color: #ff8155;
+    }
+
+    .contact h2 {
+      font-size: clamp(2.6rem, 6vw, 5.5rem);
+      max-width: 810px;
+      line-height: 0.9;
+      letter-spacing: -0.075em;
+      margin: 10px 0 30px;
+    }
+
+    .mail {
+      color: #ff8155;
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      font-weight: 700;
+      border-bottom: 1px solid #ff8155;
+    }
+
+    .mail:hover {
+      color: white;
+      border-color: white;
+    }
+
+    footer {
+      background: var(--ink);
+      color: #a9b4b4;
+      border-top: 1px solid #435158;
+      padding: 20px 0;
+      font-size: 0.82rem;
+    }
+
+    .foot {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 720px) {
+      .hero,
+      .grid-two {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .hero { padding-bottom: 48px; }
+      .photo { height: 480px; }
+      .details { grid-template-columns: 1fr 1fr; }
+      .works { grid-template-columns: 1fr; }
+      .top nav { display: none; }
+      section { padding: 62px 0; }
+
+      .foot {
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="wrap top">
+    <a class="name" href="#home">Re<i>za</i>.</a>
+
+    <nav>
+      <a href="#tentang">Tentang</a> /
+      <a href="#karya">Karya</a> /
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="wrap hero" id="home">
+      <div>
+        <p class="section-no">PORTOFOLIO — 2026</p>
+
+        <h1 class="hello">
+          Halo,<br>
+          saya <em>Reza.</em>
+        </h1>
+
+        <p class="hero-text">
+          Kreator digital dari Surabaya yang menikmati proses membangun
+          pengalaman web yang sederhana, fungsional, dan punya karakter.
+        </p>
+
+        <a class="link" href="#karya">Lihat karya pilihan ↓</a>
+      </div>
+
+      <div class="photo">
+        <strong>Reza<br>Portfolio</strong>
+      </div>
+    </section>
+
+    <section id="tentang">
+      <div class="wrap grid-two">
+        <div>
+          <p class="section-no">01 — TENTANG</p>
+          <h2 class="section-title">Membuat ide menjadi nyata.</h2>
+        </div>
+
+        <div>
+          <p class="bio">
+            Saya tertarik pada desain digital dan pengembangan website.
+            Bagi saya, karya yang baik bukan sekadar terlihat menarik,
+            tetapi juga jelas dan mudah digunakan.
+          </p>
+
+          <div class="details">
+            <div>
+              <small>Berbasis di</small>
+              Surabaya, ID
+            </div>
+
+            <div>
+              <small>Email</small>
+              setyaokky.2004@gmail.com
+            </div>
+
+            <div>
+              <small>Status</small>
+              Terbuka untuk kolaborasi
+            </div>
+          </div>
+
+          <div class="skills">
+            <span>Web Design</span>
+            <span>HTML & CSS</span>
+            <span>JavaScript</span>
+            <span>UI / UX</span>
+            <span>Figma</span>
+            <span>Content Creation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="karya">
+      <div class="wrap">
+        <p class="section-no">02 — KARYA</p>
+        <h2 class="section-title">Eksplorasi dan proyek pilihan.</h2>
+
+        <div class="works">
+          <article class="work">
+            <p>01 / WEBSITE</p>
+            <h3>Ruang<br>Belajar</h3>
+            <p>Platform belajar digital</p>
+          </article>
+
+          <article class="work">
+            <p>02 / BRANDING</p>
+            <h3>Hutan<br>Kota</h3>
+            <p>Identitas ruang hijau</p>
+          </article>
+
+          <article class="work">
+            <p>03 / UI DESIGN</p>
+            <h3>Finly<br>App</h3>
+            <p>Dashboard keuangan</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="kontak">
+      <div class="wrap">
+        <p class="section-no">03 — KONTAK</p>
+        <h2>Punya ide menarik? Mari kita bicarakan.</h2>
+
+        <a class="mail" href="mailto:setyaokky.2004@gmail.com">
+          setyaokky.2004@gmail.com ↗
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>© 2026 Reza</span>
+      <span>Surabaya, Indonesia</span>
+    </div>
+  </footer>
+</body>
+</html> 
