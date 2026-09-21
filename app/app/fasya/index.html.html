@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="id" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Fasya Atthaya Rosyada | Portfolio</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        accent: {
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                        },
+                        neon: {
+                            blue: '#38bdf8',
+                            purple: '#c084fc',
+                            emerald: '#34d399'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .dark .glassmorphism {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-300 antialiased selection:bg-brand-500 selection:text-white relative">
+
+    <!-- Scroll Progress Bar -->
+    <div id="scrollProgressBar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-brand-500 via-accent-500 to-neon-blue z-[60] w-0 transition-all duration-150"></div>
+
+    <header class="fixed top-0 left-0 right-0 z-50 glassmorphism border-b border-slate-200/60 dark:border-slate-800/60 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Simple Header Logo -->
+            <a href="#hero" class="text-xl font-bold tracking-tight text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors">
+                MyPortfolio<span class="text-brand-600 dark:text-brand-400">.</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#about" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition-colors">Tentang Saya</a>
+                <a href="#skills" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition-colors">Keahlian</a>
+                <a href="#projects" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition-colors">Proyek</a>
+                <a href="#experience" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition-colors">Pengalaman</a>
+                <a href="#contact" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition-colors">Kontak</a>
+            </nav>
+
+            <!-- Theme Toggle & Mobile Menu Button -->
+            <div class="flex items-center gap-3">
+                <button id="themeToggleBtn" aria-label="Toggle Theme" class="p-2 rounded-xl bg-slate-200/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-amber-400"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden text-slate-700"></i>
+                </button>
+
+                <button id="mobileMenuBtn" aria-label="Open Mobile Menu" class="md:hidden p-2 rounded-xl bg-slate-200/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all">
+                    <i data-lucide="menu" id="menuIcon" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="block py-2 px-3 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors">Tentang Saya</a>
+            <a href="#skills" class="block py-2 px-3 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors">Keahlian</a>
+            <a href="#projects" class="block py-2 px-3 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors">Proyek</a>
+            <a href="#experience" class="block py-2 px-3 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors">Pengalaman</a>
+            <a href="#contact" class="block py-2 px-3 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors">Kontak</a>
+        </div>
+    </header>
+
+    <main class="pt-16">
+        <section id="hero" class="min-h-[calc(100vh-4rem)] flex items-center justify-center relative overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
+            <!-- Background Radial Gradients -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-500/15 dark:bg-brand-500/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+            <div class="absolute bottom-10 right-10 w-[400px] h-[400px] bg-accent-500/15 dark:bg-accent-500/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+            <div class="max-w-4xl mx-auto text-center space-y-8">
+                <!-- Institution Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 dark:bg-brand-500/10 border border-brand-200 dark:border-brand-500/30 text-brand-700 dark:text-brand-300 text-xs sm:text-sm font-semibold">
+                    <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+                    Institut Teknologi Sepuluh Nopember (ITS)
+                </div>
+
+                <!-- Main Name Heading -->
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                    Muhammad Fasya Atthaya Rosyada
+                </h1>
+
+                <!-- Static Subtitle (No typing animation) -->
+                <div class="text-xl sm:text-2xl font-bold text-brand-600 dark:text-neon-blue tracking-wide">
+                    AI Engineer - Data Science Enthusiast
+                </div>
+
+                <!-- Short Bio -->
+                <p class="max-w-2xl mx-auto text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
+                    Mahasiswa Rekayasa Kecerdasan Artifisial yang berfokus pada pengembangan solusi AI, pemodelan data science, machine learning , serta pengembangan perangkat lunak.
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                    <a href="#projects" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:-translate-y-0.5 transition-all duration-200">
+                        Lihat Proyek
+                        <i data-lucide="arrow-down-right" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold hover:-translate-y-0.5 transition-all duration-200">
+                        Hubungi Saya
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </a>
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex items-center justify-center gap-6 pt-4 text-slate-500 dark:text-slate-400">
+                    <a href="mailto:5054251006@student.its.ac.id" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors p-2" aria-label="Email"><i data-lucide="mail" class="w-6 h-6"></i></a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors p-2" aria-label="GitHub"><i data-lucide="github" class="w-6 h-6"></i></a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors p-2" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-200/60 dark:border-slate-800/60 bg-white/50 dark:bg-slate-900/30">
+            <div class="max-w-6xl mx-auto space-y-12">
+                <div class="text-center space-y-3">
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Tentang Saya</h2>
+                    <p class="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">Profil akademis dan eksplorasi teknologi saya di Institut Teknologi Sepuluh Nopember.</p>
+                </div>
+
+                <div class="grid md:grid-cols-12 gap-8 items-center">
+                    <!-- Profile Card -->
+                    <div class="md:col-span-5 flex justify-center">
+                        <div class="relative group w-full max-w-md">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-brand-600 to-accent-600 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-500"></div>
+                            <div class="relative rounded-2xl bg-slate-900 border border-slate-800 p-6 space-y-4 font-mono text-sm shadow-2xl">
+                                <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                                    <span class="text-xs text-slate-400 ml-2">fasya_profile.py</span>
+                                </div>
+                                <div class="space-y-2 text-slate-300">
+                                    <p><span class="text-purple-400">class</span> <span class="text-yellow-300">AIEngineer</span>:</p>
+                                    <p class="pl-4"><span class="text-purple-400">def</span> <span class="text-blue-400">__init__</span>(self):</p>
+                                    <p class="pl-8"><span class="text-red-400">self</span>.name = <span class="text-emerald-300">"M. Fasya Atthaya Rosyada"</span></p>
+                                    <p class="pl-8"><span class="text-red-400">self</span>.college = <span class="text-emerald-300">"ITS Surabaya"</span></p>
+                                    <p class="pl-8"><span class="text-red-400">self</span>.languages = [<span class="text-emerald-300">"Python"</span>, <span class="text-emerald-300">"SQL"</span>, <span class="text-emerald-300">"C++"</span>]</p>
+                                    <p class="pl-8"><span class="text-red-400">self</span>.email = <span class="text-emerald-300">"5054251006@student.its.ac.id"</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile Details -->
+                    <div class="md:col-span-7 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400 text-xs font-semibold">
+                            <i data-lucide="award" class="w-4 h-4"></i> Mahasiswa ITS Surabaya
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white leading-snug">
+                            Kecerdasan Buatan & Analisis Data untuk Solusi Masa Depan
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Sebagai mahasiswa Institut Teknologi Sepuluh Nopember progam studi Rekayasa Kecerdasan Artifisial, saya memiliki dedikasi tinggi pada bidang Artificial Intelligence dan Data Science. Saya fokus pada pemrosesan data kompleks, pembuatan algoritma estimasi berbasis data spasial real-time, hingga pengembangan aplikasi berbasis logika abstrak dan database terstruktur.
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Menguasai pemrograman utama Python, SQL, dan C++, serta aktif dalam kompetisi analitik data seperti DSC MCF ITB 2026 dan beberapa organisasi serta kepanitiaan.
+                        </p>
+
+                        <!-- Highlights Grid -->
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2">
+                            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/50">
+                                <span class="block text-xl font-extrabold text-brand-600 dark:text-brand-400">JMMI - IFLS</span>
+                                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Organization Staff</span>
+                            </div>
+                            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/50">
+                                <span class="block text-xl font-extrabold text-accent-500">8++</span>
+                                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Organizing Committee</span>
+                            </div>
+                            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/50 col-span-2 sm:col-span-1">
+                                <span class="block text-xl font-extrabold text-emerald-500">3++</span>
+                                <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Project and Competition</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-200/60 dark:border-slate-800/60">
+            <div class="max-w-6xl mx-auto space-y-12">
+                <div class="text-center space-y-3">
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Keahlian & Tech Stack</h2>
+                    <p class="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">Penguasaan bahasa pemrograman khusus, tools data science, dan sistem database.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Clean Programming Languages Cards (No Charts/Progress Bars) -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500/50 transition-all shadow-sm space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-accent-500/10 text-accent-500 flex items-center justify-center">
+                            <i data-lucide="code" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Bahasa Pemrograman</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">Pustaka & framework pemodelan Machine Learning dan data spasial:</p>
+                        
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1.5 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 font-mono text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Python</span>
+                            <span class="px-3 py-1.5 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 font-mono text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">SQL</span>
+                            <span class="px-3 py-1.5 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 font-mono text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">C++</span>
+                        </div>
+                    </div>
+
+                    <!-- Data Science & AI Card -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500/50 transition-all shadow-sm space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-accent-500/10 text-accent-500 flex items-center justify-center">
+                            <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Data Science & AI</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">Pustaka & framework pemodelan Machine Learning dan data spasial:</p>
+                        
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1.5 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 font-mono text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Pandas & NumPy</span>
+                            <span class="px-3 py-1.5 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 font-mono text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Scikit-Learn</span>
+                            <span class="px-3 py-1.5 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 font-mono text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Analisis Spasial</span>
+                            <span class="px-3 py-1.5 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 font-mono text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Machine Learning</span>
+                            <span class="px-3 py-1.5 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 font-mono text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">XGBoost & Ensemble</span>
+                        </div>
+                    </div>
+
+                    <!-- Tools & Database Systems Card -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500/50 transition-all shadow-sm space-y-4 sm:col-span-2 lg:col-span-1">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
+                            <i data-lucide="database" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Tools & Database</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">Platform dan sistem manajemen basis data terstruktur:</p>
+                        
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1.5 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 font-mono text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">PostgreSQL / MySQL</span>
+                            <span class="px-3 py-1.5 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 font-mono text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Relational Database</span>
+                            <span class="px-3 py-1.5 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 font-mono text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Git & GitHub</span>
+                            <span class="px-3 py-1.5 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 font-mono text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">VS Code</span>
+                            <span class="px-3 py-1.5 text-xs rounded-lg bg-slate-100 dark:bg-slate-800 font-mono text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Jupyter Notebook</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-200/60 dark:border-slate-800/60 bg-white/50 dark:bg-slate-900/30">
+            <div class="max-w-6xl mx-auto space-y-10">
+                <div class="text-center space-y-3">
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Proyek & Karya</h2>
+                    <p class="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">Portofolio aplikasi, game strategi, sistem basis data, dan kompetisi.</p>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="grid sm:grid-cols-2 gap-8">
+                    
+                    <!-- Proyek 1: Orbitrix Game -->
+                    <div class="project-card group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="relative overflow-hidden aspect-video bg-slate-900 flex items-center justify-center">
+                                <img src="https://placehold.co/600x350/0f172a/38bdf8?text=Orbitrix+Board+Game" alt="Orbitrix Game" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute top-3 right-3 bg-brand-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">Board Game</span>
+                            </div>
+                            <div class="p-6 space-y-3">
+                                <span class="text-xs font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider">Strategy Game</span>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition-colors">Orbitrix</h3>
+                                <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed font-medium">
+                                    Orbitrix: Board game strategi abstrak dengan mekanisme pergeseran sirkular (circular shift).
+                                </p>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-6 pt-2 space-y-4">
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 text-xs rounded bg-slate-100 dark:bg-slate-800 font-mono text-slate-600 dark:text-slate-400">C++</span>
+                                <span class="px-2.5 py-1 text-xs rounded bg-slate-100 dark:bg-slate-800 font-mono text-slate-600 dark:text-slate-400">Python</span>
+                                <span class="px-2.5 py-1 text-xs rounded bg-slate-100 dark:bg-slate-800 font-mono text-slate-600 dark:text-slate-400">Circular Shift Logic</span>
+                            </div>
+                            <button onclick="openModal('orbitrix')" class="w-full py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-semibold transition-colors flex items-center justify-center gap-2">
+                                Detail Proyek <i data-lucide="external-link" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Proyek 2: Deteksi Waktu Kedatangan Bus -->
+                    <div class="project-card group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="relative overflow-hidden aspect-video bg-slate-900 flex items-center justify-center">
+                                <img src="https://placehold.co/600x350/0f172a/34d399?text=Bus+ETA+Detection" alt="Deteksi Bus ETA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute top-3 right-3 bg-emerald-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">Spatial Analytics</span>
+                            </div>
+                            <div class="p-6 space-y-3">
+                                <span class="text-xs font-semibold text-emerald-500 uppercase tracking-wider">AI & Spatial Analytics</span>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">Aplikasi Deteksi Waktu Kedatangan Bus</h3>
+                                <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                    Sistem cerdas pemantauan & estimasi waktu kedatangan armada bus secara real-time berbasis kalkulasi data spasial dan algoritma presisi.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-6 pt-2 space-y-4">
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 text-xs rounded bg-slate-100 dark:bg-slate-800 font-mono text-slate-600 dark:text-slate-400">Python</span>
+                                <span class="px-2.5 py-1 text-xs rounded bg-slate-100 dark:bg-slate-800 font-mono text-slate-600 dark:text-slate-400">Spatial Data</span>
+                                <span class="px-2.5 py-1 text-xs rounded bg-slate-100 dark:bg-slate-800 font-mono text-slate-600 dark:text-slate-400">Machine Learning</span>
+                            </div>
+                            <button onclick="openModal('busEta')" class="w-full py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-semibold transition-colors flex items-center justify-center gap-2">
+                                Detail Proyek <i data-lucide="external-link" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Proyek 3: Database Penjual Aqiqah -->
+                    <div class="project-card group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="relative overflow-hidden aspect-video bg-slate-900 flex items-center justify-center">
+                                <img src="https://placehold.co/600x350/0f172a/c084fc?text=Aqiqah+Database+System" alt="Database Aqiqah" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute top-3 right-3 bg-purple-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">Database Architecture</span>
+                            </div>
+                            <div class="p-6 space-y-3">
+                                <span class="text-xs font-semibold text-accent-500 uppercase tracking-wider">Database & System Engineering</span>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-accent-500 transition-colors">Aplikasi Database Penjual Aqiqah</h3>
+                                <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                    Sistem manajemen database terstruktur untuk efisiensi pengelolaan transaksi, pemantauan stok, dan manifes pemesanan aqiqah.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-6 pt-2 space-y-4">
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 text-xs rounded bg-slate-100 dark:bg-slate-800 font-mono text-slate-600 dark:text-slate-400">SQL</span>
+                                <span class="px-2.5 py-1 text-xs rounded bg-slate-100 dark:bg-slate-800 font-mono text-slate-600 dark:text-slate-400">Python</span>
+                                <span class="px-2.5 py-1 text-xs rounded bg-slate-100 dark:bg-slate-800 font-mono text-slate-600 dark:text-slate-400">Relational DB</span>
+                            </div>
+                            <button onclick="openModal('aqiqahDb')" class="w-full py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-semibold transition-colors flex items-center justify-center gap-2">
+                                Detail Proyek <i data-lucide="external-link" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Proyek 4: DSC MCF ITB 2026 -->
+                    <div class="project-card group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="relative overflow-hidden aspect-video bg-slate-900 flex items-center justify-center">
+                                <img src="https://placehold.co/600x350/0f172a/f43f5e?text=DSC+MCF+ITB+2026" alt="DSC MCF ITB 2026" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute top-3 right-3 bg-rose-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">National Competition</span>
+                            </div>
+                            <div class="p-6 space-y-3">
+                                <span class="text-xs font-semibold text-rose-500 uppercase tracking-wider">Data Science Competition</span>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-rose-500 transition-colors">Kompetisi DSC MCF ITB 2026</h3>
+                                <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                    Pemodelan Data Science dan Machine Learning mutakhir untuk analisis tren, pembersihan data masif, dan optimasi prediksi analitik.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-6 pt-2 space-y-4">
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-1 text-xs rounded bg-slate-100 dark:bg-slate-800 font-mono text-slate-600 dark:text-slate-400">Python</span>
+                                <span class="px-2.5 py-1 text-xs rounded bg-slate-100 dark:bg-slate-800 font-mono text-slate-600 dark:text-slate-400">Pandas</span>
+                                <span class="px-2.5 py-1 text-xs rounded bg-slate-100 dark:bg-slate-800 font-mono text-slate-600 dark:text-slate-400">Scikit-Learn</span>
+                            </div>
+                            <button onclick="openModal('dscMcf')" class="w-full py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-semibold transition-colors flex items-center justify-center gap-2">
+                                Detail Proyek <i data-lucide="external-link" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-200/60 dark:border-slate-800/60">
+            <div class="max-w-4xl mx-auto space-y-12">
+                <div class="text-center space-y-3">
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Pengalaman & Perjalanan</h2>
+                    <p class="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">Jejak aktivitas akademis di ITS, ajang kompetisi, serta riset pengembangan perangkat lunak.</p>
+                </div>
+
+                <div class="relative border-l-2 border-slate-200 dark:border-slate-800 ml-4 sm:ml-32 space-y-10">
+                    <!-- Timeline Item 1 -->
+                    <div class="relative pl-6 sm:pl-8 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-rose-500 ring-4 ring-white dark:ring-slate-950"></div>
+                        <div class="sm:absolute sm:-left-36 sm:top-1 text-sm font-semibold text-rose-500 mb-1 sm:mb-0">
+                            2026
+                        </div>
+                        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-rose-500/40 transition-colors">
+                            <div class="flex items-center gap-2 text-rose-500 text-xs font-semibold uppercase mb-1">
+                                <i data-lucide="trophy" class="w-4 h-4"></i> Competitor Sains Data
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Peserta DSC MCF ITB 2026</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 font-medium mb-3">Institut Teknologi Bandung (ITB)</p>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Merancang model Data Science dan Machine Learning menggunakan Python untuk analisis prediktif dan ekstraksi wawasan pada kompetisi sains data tingkat nasional.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="relative pl-6 sm:pl-8 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 ring-4 ring-white dark:ring-slate-950"></div>
+                        <div class="sm:absolute sm:-left-36 sm:top-1 text-sm font-semibold text-emerald-500 mb-1 sm:mb-0">
+                            2025 - 2026
+                        </div>
+                        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-emerald-500/40 transition-colors">
+                            <div class="flex items-center gap-2 text-emerald-500 text-xs font-semibold uppercase mb-1">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i> Spasial & AI Research
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Pengembang Aplikasi Deteksi Waktu Kedatangan Bus</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 font-medium mb-3">Sistem Transportasi Cerdas</p>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Mengembangkan integrasi data spasial real-time untuk memperhitungkan estimasi kedatangan bus publik dengan algoritma pemrosesan data berbasis lokasi.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="relative pl-6 sm:pl-8 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-500 ring-4 ring-white dark:ring-slate-950"></div>
+                        <div class="sm:absolute sm:-left-36 sm:top-1 text-sm font-semibold text-brand-500 mb-1 sm:mb-0">
+                            2025
+                        </div>
+                        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-brand-500/40 transition-colors">
+                            <div class="flex items-center gap-2 text-brand-500 text-xs font-semibold uppercase mb-1">
+                                <i data-lucide="code-2" class="w-4 h-4"></i> Software & Game Engineering
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Pengembang Game Orbitrix & Database Penjual Aqiqah</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 font-medium mb-3">Proyek Perangkat Lunak</p>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Merancang board game strategi abstrak Orbitrix menggunakan mekanisme pergeseran sirkular (circular shift) serta membangun arsitektur SQL terstruktur untuk manajemen database penjualan Aqiqah.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 4 -->
+                    <div class="relative pl-6 sm:pl-8 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-accent-500 ring-4 ring-white dark:ring-slate-950"></div>
+                        <div class="sm:absolute sm:-left-36 sm:top-1 text-sm font-semibold text-accent-500 mb-1 sm:mb-0">
+                            Aktif
+                        </div>
+                        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-accent-500/40 transition-colors">
+                            <div class="flex items-center gap-2 text-accent-500 text-xs font-semibold uppercase mb-1">
+                                <i data-lucide="graduation-cap" class="w-4 h-4"></i> Akademis
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Mahasiswa Institut Teknologi Sepuluh Nopember (ITS)</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 font-medium mb-3">Surabaya, Indonesia</p>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Mendalami dasar komputasi, algoritma & struktur data, sistem basis data, serta riset lanjutan Machine Learning dan kecerdasan buatan.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-200/60 dark:border-slate-800/60 bg-white/50 dark:bg-slate-900/30">
+            <div class="max-w-4xl mx-auto space-y-12">
+                <div class="text-center space-y-3">
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Hubungi Saya</h2>
+                    <p class="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">Mari berdiskusi mengenai proyek AI, riset Data Science, atau tawaran kolaborasi.</p>
+                </div>
+
+                <div class="grid md:grid-cols-12 gap-8">
+                    <!-- Contact Info Card -->
+                    <div class="md:col-span-5 space-y-6">
+                        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-6 shadow-sm">
+                            <div class="flex items-start gap-4">
+                                <div class="p-3 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-400">
+                                    <i data-lucide="user" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Nama</h4>
+                                    <p class="text-sm font-semibold text-slate-900 dark:text-white">Muhammad Fasya Atthaya Rosyada</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="p-3 rounded-xl bg-accent-500/10 text-accent-500">
+                                    <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Institusi</h4>
+                                    <p class="text-sm font-semibold text-slate-900 dark:text-white">Institut Teknologi Sepuluh Nopember (ITS)</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="p-3 rounded-xl bg-emerald-500/10 text-emerald-500">
+                                    <i data-lucide="mail" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Email</h4>
+                                    <a href="mailto:5054251006@student.its.ac.id" class="text-sm font-semibold text-brand-600 dark:text-brand-400 hover:underline break-all">
+                                        5054251006@student.its.ac.id
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="md:col-span-7">
+                        <form id="contactForm" class="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm">
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-1 text-slate-700 dark:text-slate-300">Nama Anda</label>
+                                <input type="text" id="name" required placeholder="Masukkan Nama" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm transition-all">
+                            </div>
+
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-1 text-slate-700 dark:text-slate-300">Email Anda</label>
+                                <input type="email" id="email" required placeholder="email@domain.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm transition-all">
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-sm font-medium mb-1 text-slate-700 dark:text-slate-300">Pesan</label>
+                                <textarea id="message" rows="4" required placeholder="Tuliskan pesan Anda..." class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm transition-all resize-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2">
+                                <i data-lucide="send" class="w-4 h-4"></i> Kirim Pesan
+                            </button>
+
+                            <!-- Alert Feedback Box -->
+                            <div id="formStatus" class="hidden p-4 rounded-xl text-sm font-medium transition-all"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Project Details Pop-up Modal -->
+    <div id="projectModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+        <div class="relative w-full max-w-2xl rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal()" class="absolute top-4 right-4 p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div id="modalContent" class="space-y-4">
+                <!-- Dynamically populated content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-slate-200 dark:border-slate-800 text-center text-slate-500 dark:text-slate-400 text-sm">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 Muhammad Fasya Atthaya Rosyada - ITS.</p>
+            <p class="text-xs font-mono">Python • SQL • C++</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Theme Switcher Logic
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        
+        if (localStorage.theme === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else {
+            document.documentElement.classList.add('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Scroll Progress Bar Logic
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollProgressBar').style.width = scrolled + '%';
+        });
+
+        // Projects Detailed Data Modal
+        const projectsData = {
+            orbitrix: {
+                title: 'Orbitrix',
+                category: 'Strategy Board Game',
+                desc: 'Orbitrix: Board game strategi abstrak dengan mekanisme pergeseran sirkular (circular shift). Dirancang dengan logika pergerakan yang menantang serta pemodelan sistematis.',
+                tech: ['C++', 'Python', 'Circular Shift Logic', 'Abstract Board Game']
+            },
+            busEta: {
+                title: 'Aplikasi Deteksi Waktu Kedatangan Bus',
+                category: 'Sistem Cerdas & Analisis Data Spasial',
+                desc: 'Sistem monitoring dan kalkulasi estimasi waktu kedatangan (ETA) bus publik secara real-time berbasis data lokasi spasial dan algoritma pemrosesan presisi.',
+                tech: ['Python', 'Data Spasial', 'Machine Learning', 'Spatial Analytics']
+            },
+            aqiqahDb: {
+                title: 'Aplikasi Database Penjual Aqiqah',
+                category: 'Sistem Manajemen Basis Data Relasional',
+                desc: 'Sistem arsitektur database terstruktur yang dirancang untuk memfasilitasi pencatatan transaksi penjualan, inventaris stok hewan ternak, dan manifes pemesanan aqiqah.',
+                tech: ['SQL', 'Relational Database', 'Python', 'DBMS Design']
+            },
+            dscMcf: {
+                title: 'Kompetisi DSC MCF ITB 2026',
+                category: 'Data Science & Machine Learning Competition',
+                desc: 'Pengembangan model Machine Learning prediktif untuk menyelesaikan tantangan sains data nasional di Institut Teknologi Bandung (ITB).',
+                tech: ['Python', 'Pandas & NumPy', 'Scikit-Learn', 'XGBoost']
+            }
+        };
+
+        const projectModal = document.getElementById('projectModal');
+        const modalContent = document.getElementById('modalContent');
+
+        function openModal(projectId) {
+            const data = projectsData[projectId];
+            if (!data) return;
+
+            modalContent.innerHTML = `
+                <span class="text-xs font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider">${data.category}</span>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white">${data.title}</h3>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm">${data.desc}</p>
+                <div class="pt-2">
+                    <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Teknologi / Stack:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        ${data.tech.map(t => `<span class="px-3 py-1 text-xs rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-300 font-mono">${t}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+
+            projectModal.classList.remove('hidden');
+            projectModal.classList.add('flex');
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            projectModal.classList.add('hidden');
+            projectModal.classList.remove('flex');
+        }
+
+        projectModal.addEventListener('click', (e) => {
+            if (e.target === projectModal) {
+                closeModal();
+            }
+        });
+
+        // Contact Form Handlers
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            formStatus.classList.remove('hidden', 'bg-red-500/10', 'text-red-500');
+            formStatus.classList.add('bg-emerald-500/10', 'text-emerald-600', 'dark:text-emerald-400');
+            formStatus.textContent = 'Pesan Anda berhasil terkirim ke Muhammad Fasya Atthaya Rosyada!';
+
+            contactForm.reset();
+
+            setTimeout(() => {
+                formStatus.classList.add('hidden');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
